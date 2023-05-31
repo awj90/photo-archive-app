@@ -9,8 +9,8 @@ export class AppService {
   http = inject(HttpClient);
   router = inject(Router);
 
-  API_URL: string = 'https://lazy-insect-production.up.railway.app';
-  // API_URL: string = 'http://localhost:8080';
+  // API_URL: string = 'https://lazy-insect-production.up.railway.app';
+  API_URL: string = 'http://localhost:8080';
 
   upload(name: string, title: string, comments: string, archive: File) {
     const formData = new FormData();

@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
+import { BeforeLeavingComponent } from '../utils';
 
 @Component({
   selector: 'app-view-one',
   templateUrl: './view-one.component.html',
   styleUrls: ['./view-one.component.css'],
 })
-export class ViewOneComponent implements OnInit {
+export class ViewOneComponent implements OnInit, BeforeLeavingComponent {
   constructor(private fb: FormBuilder, private appService: AppService) {}
 
   form!: FormGroup;
@@ -28,6 +29,14 @@ export class ViewOneComponent implements OnInit {
       f
     );
     this.form = this.createForm();
+  }
+
+  formNotSaved(): boolean {
+    return this.form.dirty;
+  }
+
+  confirmMessage(): string {
+    return 'You have not completed the upload.\n Are you sure you want to leave?';
   }
 
   private createForm(): FormGroup {

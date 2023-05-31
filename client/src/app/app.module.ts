@@ -8,10 +8,16 @@ import { ViewZeroComponent } from './components/view-zero.component';
 import { ViewTwoComponent } from './components/view-two.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppService } from './app.service';
+import { formGuard } from './utils';
 
 const appRoutes: Routes = [
   { path: 'bundles', component: ViewZeroComponent, title: 'Home' },
-  { path: 'upload', component: ViewOneComponent, title: 'Upload your photos' },
+  {
+    path: 'upload',
+    component: ViewOneComponent,
+    title: 'Upload your photos',
+    canDeactivate: [formGuard],
+  },
   {
     path: 'bundle/:bundleId',
     component: ViewTwoComponent,

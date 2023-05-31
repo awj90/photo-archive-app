@@ -1,3 +1,8 @@
+## Set/Export environment variables
+
+- SECRET_KEY and ACCESS_KEY for Digital Ocean Space Bucket
+- SPRING_DATA_MONGODB_URI
+
 ## POST /upload
 
 - File input MIME: application/zip
