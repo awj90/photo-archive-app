@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-xs-12">
+    <table>
+      <tr>
+        <td>
+          <h3>Photo Storage</h3>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button
+            type="button"
+            [routerLink]="['/upload']"
+            class="btn btn-primary"
+          >
+            Upload
+          </button>
+        </td>
+      </tr>
+      <hr />
+      <tr *ngFor="let bundle of archives$ | async">
+        <td>
+          <a
+            style="cursor: pointer"
+            [routerLink]="['../', 'bundle', bundle.bundleId]"
+          >
+            {{ bundle.title | titlecase }}
+          </a>
+        </td>
+        <td>
+          <em>
+            {{ bundle.date }}
+          </em>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

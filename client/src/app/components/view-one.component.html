@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form
+      [formGroup]="form"
+      method="POST"
+      action="/upload"
+      enctype="multipart/form-data"
+      (submit)="process()"
+    >
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <div class="form-group">
+              <input
+                type="text"
+                size="30"
+                placeholder="Name"
+                formControlName="name"
+                class="form-control"
+              />
+              <span
+                *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+                style="color: red"
+                >Please input your name</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Title:</td>
+          <td>
+            <div class="form-group">
+              <input
+                type="text"
+                size="30"
+                placeholder="Title"
+                formControlName="title"
+                class="form-control"
+              />
+              <span
+                *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+                style="color: red"
+                >Please input a title</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Comments:</td>
+          <td>
+            <div class="form-group">
+              <textarea
+                type="text"
+                cols="30"
+                rows="5"
+                placeholder="Your comments in here"
+                formControlName="comments"
+                class="form-control"
+              ></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Archive:</td>
+          <td>
+            <div class="form-group">
+              <input
+                type="file"
+                accept="application/zip"
+                placeholder="ZIP archive of photos"
+                formControlName="archive"
+                class="form-control"
+                #zipFile
+              />
+              <span
+                *ngIf="
+                  form.get('archive')?.invalid && form.get('archive')?.touched
+                "
+                style="color: red"
+                >Please upload a zip folder of images</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button
+              type="button"
+              [routerLink]="['/bundles']"
+              class="btn btn-danger"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
